@@ -1,5 +1,6 @@
 #include "StringTokenizer.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 StringTokenizer::StringTokenizer(string a_text)
@@ -17,26 +18,28 @@ StringTokenizer::StringTokenizer(string a_text, string a_delim)
 
 string StringTokenizer::nextToken()
 {
+	string temp_text = "";
+	if (!hasMoreTokens())
+	{
+		return temp_text;
+	}
 	while (isDelimiter(text[index]))
 	{
 		index++;
 	}
-	string temp_text = "";
 	while (!isDelimiter(text[index]))
 	{
 		temp_text += text[index];
 		index++;
 		if (index == text.length())
-		{
-			break;
-		}
+			return temp_text;
 	}
 	return temp_text;
 }
 
 string StringTokenizer::nextToken(string a_delim)
 {
-	delim += a_delim;
+	delim = a_delim;
 	return nextToken();
 }
 
@@ -45,7 +48,7 @@ int StringTokenizer::countAllTokens()
 	int saved_index = index;
 	index = 0;
 	int count = 0;
-	while (index < text.length())
+	while (index < text.length() && hasMoreTokens())
 	{
 		nextToken();
 		count++;
@@ -69,18 +72,32 @@ int StringTokenizer::countAllDelimiters()
 
 bool StringTokenizer::contains(string a_string)
 {
-	
+	if (text.find(a_string) == string::npos)
+	{
+		return false;
+	}
+	return true;
 }
 
 void StringTokenizer::printContents()
 {
-	
+	cout << "The text is \"" + text + "\"" << endl;
+	cout << "There is " << countAllTokens() << " tokens." << endl;
+	cout << "There is " << countAllDelimiters() << " delimiters." << endl;
+
 }
 
 
 bool StringTokenizer::hasMoreTokens()
 {
-	
+	for (int i = index; i < text.length(); i++)
+	{
+		if (!isDelimiter(text[i]))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 
