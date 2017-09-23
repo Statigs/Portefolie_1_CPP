@@ -28,8 +28,8 @@ void main()
 		cout << "" << endl;
 		cout << "Enter a option: ";
 		getline(cin, input);
-		stringstream myStream(input);
-		if (myStream >> i)
+		stringstream int_casting(input);
+		if (int_casting >> i)
 			break;
 		cout << "Invalid number, please try again" << endl;
 	}
@@ -69,6 +69,7 @@ void main()
 		system("pause");
 		break;
 	default:
-		break;
+		cout << "Invalid number, please try again" << endl;
+		goto again;
 	}
 }

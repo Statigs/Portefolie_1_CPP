@@ -72,7 +72,16 @@ int StringTokenizer::countAllDelimiters()
 
 bool StringTokenizer::contains(string a_string)
 {
-	if (text.find(a_string) == string::npos)
+	int location = text.find(a_string);
+	if (location == string::npos)
+	{
+		return false;
+	}
+	if (!isDelimiter(text[location - 1]))
+	{
+		return false;
+	}
+	if (!isDelimiter(text[location + a_string.length()]))
 	{
 		return false;
 	}
