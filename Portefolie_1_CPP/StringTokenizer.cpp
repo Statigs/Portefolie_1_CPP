@@ -93,7 +93,6 @@ void StringTokenizer::printContents()
 	cout << "The text is \"" + text + "\"" << endl;
 	cout << "There is " << countAllTokens() << " tokens." << endl;
 	cout << "There is " << countAllDelimiters() << " delimiters." << endl;
-
 }
 
 
