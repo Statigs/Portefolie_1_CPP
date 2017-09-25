@@ -91,8 +91,9 @@ bool StringTokenizer::contains(string a_string)
 void StringTokenizer::printContents()
 {
 	cout << "The text is \"" + text + "\"" << endl;
-	cout << "There is " << countAllTokens() << " tokens." << endl;
-	cout << "There is " << countAllDelimiters() << " delimiters." << endl;
+	cout << "The delimiters are \"" + delim + "\"" << endl;
+	cout << "There are " << countAllTokens() << " tokens." << endl;
+	cout << "There are " << countAllDelimiters() << " delimiters." << endl;
 }
 
 

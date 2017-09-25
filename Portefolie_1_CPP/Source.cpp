@@ -26,7 +26,7 @@ void main()
 	while (true)
 	{
 		cout << "" << endl;
-		cout << "Enter a option: ";
+		cout << "Enter an option: ";
 		getline(cin, input);
 		stringstream int_casting(input);
 		if (int_casting >> i)
